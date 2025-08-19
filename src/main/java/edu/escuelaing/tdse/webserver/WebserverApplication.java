@@ -4,9 +4,21 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URISyntaxException;
+import java.util.logging.Logger;
 
+/**
+ * The {@code WebserverApplication} class implements a simple HTTP web server.
+ * <p>
+ * It listens for incoming client connections on a specified port and handles
+ * each connection. The server can be started and stopped programmatically.
+ * </p>
+ */
 public class WebserverApplication {
 
+    // Loger from Lombok
+    private static final Logger logger = Logger.getLogger(WebserverApplication.class.getName());
+
+    // Server variables
     private static final int PORT = 35000;
     private ServerSocket serverSocket;
     private boolean running = true;
@@ -16,11 +28,12 @@ public class WebserverApplication {
         server.startServer();
     }
 
-    public void startServer() throws IOException, URISyntaxException {
+    public void startServer() {
         try {
-            serverSocket = new ServerSocket(PORT);
+            this.serverSocket = new ServerSocket(PORT);
         } catch (IOException e) {
-            throw e;
+            logger.severe("Failed to start server on port: " + PORT);
+            System.exit(1);
         }
 
     }
@@ -30,7 +43,9 @@ public class WebserverApplication {
         if (serverSocket != null && !serverSocket.isClosed()) {
             try {
                 serverSocket.close();
+                logger.info("Server stopped successfully.");
             } catch (IOException e) {
+                logger.severe("Error closing server: " + e.getMessage());
             }
         }
     }
