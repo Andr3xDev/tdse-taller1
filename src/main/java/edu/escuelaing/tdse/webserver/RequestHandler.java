@@ -7,6 +7,22 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * Handles HTTP requests for a simple web server.
+ * <p>
+ * This class processes incoming HTTP requests from a client socket, routes them
+ * to the appropriate handler
+ * based on the HTTP method and URI, and sends back the corresponding HTTP
+ * response.
+ * </p>
+ * <ul>
+ * <li>Supports serving static resources from a specified resource root
+ * directory.</li>
+ * <li>Handles specific API endpoints for GET and POST requests.</li>
+ * <li>Returns appropriate HTTP status codes for unsupported methods and missing
+ * resources.</li>
+ * </ul>
+ */
 public class RequestHandler {
 
     // Server paths
