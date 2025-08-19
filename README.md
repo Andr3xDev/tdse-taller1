@@ -1,20 +1,18 @@
 <div align="center">
 <h1 align="center">Manual Web Server</h1>
 <p align="center">
-Web server whitout frameworks, that supports multiple non-concurrent requests
+Web server without frameworks, that supports multiple non-concurrent requests
 </p>
 </div>
 
 </br>
 
 ## About
-This project is a web server built from scratch in Java without using any frameworks. It manually handles raw HTTP requests, serving both static resources and simple REST services.
+This project is a handcrafted web server, built from the ground up in pure Java without relying on any external frameworks. Instead of using pre-built tools, this server connects directly to the network to read and understand the fundamental language of the web. It’s designed to be a reliable workhorse, expertly serving static files like HTML pages, CSS stylesheets, and images right to your browser. 
 
-The server is capable of:
+Beyond just files, it's also equipped to run a simple, dynamic API, making it a versatile tool for various web tasks. This project peels back the layers of modern abstractions to show how the core conversation between a browser and a server truly works.es.
 
-- Serving static files such as HTML, CSS, JavaScript, and images.
-- Responding to RESTful GET and POST requests for specific services.
-
+</br>
 </br>
 
 ## Installation & usage
@@ -25,6 +23,8 @@ To run this server correctly, you need the following applications installed:
 - Java
 - Bash
 - Git
+
+</br>
 
 ### Installation
 
@@ -68,18 +68,20 @@ Manual acceptance tests were performed by requesting different resources to conf
 
 - styles.css
 
-![css](docs/test.png)
+![css](docs/css.png)
 
 - image1.png
 
-![image](docs/image.png)
+![image](docs/image1.png)
 
 - Not existing resources
 
 ![error](docs/not.png)
 
+</br>
+
 ### Unit Tests
 
-Each unit test serves a specific purpose:
+There are a suite of integration tests validates server reliability by booting a live instance and sending real HTTP requests. These tests confirm that both static and API endpoints return the expected status codes, headers, and content, ensuring correct end-to-end behavior.
 
 ![tests](docs/test.png)
