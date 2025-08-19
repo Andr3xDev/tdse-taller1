@@ -36,6 +36,20 @@ public class WebserverApplication {
             System.exit(1);
         }
 
+        while (running) {
+            try {
+                logger.info("Server started on port: " + PORT);
+                Socket clientSocket = serverSocket.accept();
+                RequestHandler requestHandler = new RequestHandler(clientSocket);
+                requestHandler.handleRequest();
+            } catch (IOException e) {
+                if (!running) {
+                    logger.info("Server stopped.");
+                    break;
+                }
+                logger.severe("Error accepting connection: " + e.getMessage());
+            }
+        }
     }
 
     public void stopServer() {
